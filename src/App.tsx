@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Timer } from './component/Timer';
 
 function App() {
+  
+  const [time, setTime] = useState(10)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Timer time={time} />
+      <button
+        style={{ position: 'relative', zIndex: '1000' }}
+        onClick={() => {
+          setTime(time < 50 ? time + 5 : 10);
+        }}>+5</button>
     </div>
   );
 }
